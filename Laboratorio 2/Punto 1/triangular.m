@@ -11,41 +11,33 @@
   endwhile
   
  #crear la matriz M
-  for i=1 : n
-    for j=1: n
-      disp(['inserte el valor de la fila ',num2str(i),' columna ',num2str(j)]);
       ok=false;
   while (~ok)
     try
-      M (i,j) = input(""); #lee el dato
+      M  = input("inserte la matriz M "); #lee el dato
       ok=true;
     catch
-      disp ("numero no valido")
-      disp(['inserte el valor de la fila ',num2str(i),' columna ',num2str(j)]);
-      
+      disp ("Matriz no valida")
+          
     end_try_catch
   endwhile
-    endfor
-  endfor
  #mostramos la matriz obtenida
   disp (" Matriz M ingresada");
   disp(M)
   
  #crea el vector B
-  for i=1 : n
-      disp(['inserte el valor de la columa ',num2str(i),"del vector B"]);
-      ok=false;
+
+ok=false;
   while (~ok)
     try
-      B (i) = input(""); #lee el dato
+      B = input("inserte el valor del vector B "); #lee el dato
       ok=true;
     catch
-      disp ("numero no valido")
-      disp(['inserte el valor de la columa ',num2str(i)," del vector solucion B"]);
-      end_try_catch
+      disp ("Vector no valido")
+    end_try_catch
   endwhile
     
-  endfor
+
   
  #mostramos el vector b
     disp (" Vector B ingresado");
@@ -104,7 +96,10 @@
     
  #mostramos el ventor X solucion 
     disp (" vector solucion X de  Ux=Y");
-    disp(X');
+    for i=1:n
+      printf("X%d = %d \n",i,X(i));
+    endfor
+    
   endif
 
 
