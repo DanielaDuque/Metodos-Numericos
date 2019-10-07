@@ -14,7 +14,7 @@ while (~ok)#Se asegura que no se salga del ciclo sin haber leido correctamente e
   end_try_catch
 endwhile
 vector1 = -2:.1:6;#vector con el que se va a graficar
-vector = 0:.1:1.2;#vector con el que se va a graficar
+vector = 1:.1:8;#vector con el que se va a graficar
 fun_g=[];
 contador =1; #contador
 while contador<=com
@@ -181,17 +181,7 @@ endwhile
     title(fun_char);#titulo
     hold off; #termina la figura
     
-#Todas juntas extrapolada
 
-  figure;#crea la figura
-   hold on; #inicia el proceso
-   for i=1:com #recorre el numero de graficas
-     plot(vector1,fun_g1(i,:));# crea la linea
-    endfor
-    plot(vector1,fun_g1(contador+1,:)); #grafica la funcion a comparar
-    legend(len_c); #agrega una leyenda
-    title("Todas juntas <<extrapoladas>>"); #titulo
-    hold off; #termina la figura
 
 
 
