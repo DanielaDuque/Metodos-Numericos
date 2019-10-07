@@ -219,7 +219,20 @@ if (interp)
 	endfor
   
   printf("El polinomio que se obtiene es: \n");
-  simplify(vpa(pol,5)) #Se imprime el polinomio
+  simplify(vpa(pol,7)) #Se imprime el polinomio
+  func = matlabFunction(simplify(vpa(pol,7)));
+  vector = -1:.1:3;
+  for i=1:length(vector)
+    grad(i)=func(vector(i));
+  endfor
+  
+  
+  grad
+  figure;
+  hold on;
+  plot (vector,grad);
+  legend ("Interpolacion de newton");
+  hold off;
   
   
   
