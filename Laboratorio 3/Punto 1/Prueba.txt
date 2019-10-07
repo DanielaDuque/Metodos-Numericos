@@ -1,0 +1,61 @@
+3
+1
+0 1.2
+1 0.362358
+2
+0 0.6 1.2
+1 0.825336 0.362358
+3
+0 0.4 0.8 1.2
+1 0.921061 0.696707 0.362358
+cos(x)
+
+
+SIMPLIFICADO  NUMERADOR Y DENOMINADOR
+fun(com)=""; #crea un string vacio
+mul=1; #hace la variable multiplicadora en 1 por ser el numero neutro de la multiplicacion
+b=1;
+for i=1:n+1
+  for k=1:n+1
+    if i~=k
+      mul = mul* (x(i)-x(k));
+    endif
+  endfor
+  if y(i)/mul >=0
+    fun = strcat(fun," + ");
+  endif 
+  
+  fun = strcat (fun, num2str (y(i)/mul),"* ( " );
+  for j=1:n+1
+    if i~=j
+      c=[1,-x(j)];
+      b = conv(b,c);
+    endif
+   endfor
+   fun = strcat(fun,polyout(b,"x")," )");
+   b=1;
+   mul=1;
+endfor 
+
+SIMPLIFICADO EL DENOMINADOR 
+for i=1:n+1
+  for k=1:n+1
+    if i~=k
+      mul = mul* (x(i)-x(k));
+    endif
+  endfor
+  if y(i)/mul >=0
+    fun = strcat(fun," + ");
+  endif 
+  
+  fun = strcat (fun, num2str (y(i)/mul),"* ( " );
+  for j=1:n+1
+    if i~=j
+      fun = strcat(fun," ( x - ",num2str (x(j))," ) * ");
+    endif
+   endfor
+   fun = strtrunc (fun, length(fun)-2);
+   fun = strcat(fun," )");
+   
+   mul=1;
+endfor 
