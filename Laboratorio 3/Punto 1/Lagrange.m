@@ -149,6 +149,13 @@ while (~ok)#Se asegura que no se salga del ciclo sin haber leido correctamente e
 endwhile
 
 #producir graficos 
+
+#creamos el legend
+  for i=1:com #recorre todas las funciones
+  len_c{i,1} = ["fun ", num2str(i)];#crea el legend como una celda
+  endfor
+  len_c{com+1,1} =fun_char;#agrega el coseno
+
 #Todas juntas
   figure;#crea la figura
    hold on; #inicia el proceso
@@ -156,6 +163,7 @@ endwhile
      plot(vector,fun_g(i,:));# crea la linea
     endfor
     plot(vector,fun_g(contador+1,:));#grafica la funcion a comparar
+    legend(len_c); #agrega una leyenda
     title("Todas juntas");#titulo
     hold off; #termina la figura
     
@@ -181,6 +189,7 @@ endwhile
      plot(vector1,fun_g1(i,:));# crea la linea
     endfor
     plot(vector1,fun_g1(contador+1,:)); #grafica la funcion a comparar
+    legend(len_c); #agrega una leyenda
     title("Todas juntas <<extrapoladas>>"); #titulo
     hold off; #termina la figura
 
