@@ -92,7 +92,7 @@ printf("%10s","x");
 for	i=1 : puntos_size
 	valor = valor_inicial+(i-1)*h; #Se genera los valores x con valor inicial y h
 	printf("%10d ",valor); 
-endfor
+endfor #terminan generacion de valores x
 printf("\n");
 printf("%10s ","f(x)");
 for	i=1 : puntos_size
@@ -111,7 +111,7 @@ printf("Tabla de diferencias finitas hacia adelante \n");
 for i=1 : puntos_size
 	dif_fin(i,1) = i-1; #Se calculan los primeros valores de la tabla
 	dif_fin(i,2) = valor_inicial+(i-1)*h;;
-endfor
+endfor #termina ciclo primeros valores 
 dif_fin = [dif_fin f_'];
 for i=4 : puntos_size+3-1
 	for j=i-3+1: puntos_size
@@ -133,7 +133,7 @@ for i=1: size(dif_fin)(1)
 			printf("%15d ", dif_fin(i,j)); # se imprimen los valores de la matriz
 		endfor
 		printf("\n");
-endfor
+endfor #termina ciclo
 printf("\n");
 
 
@@ -186,39 +186,40 @@ if (interp)
   
   
   
-  
+
 	#Se determina grado de interpolacion
-	max_grado = puntos_size - (pos_interpolar-1) - 1;
+	max_grado = n;
+  pos_interpolar = 1;
 	if  max_grado< n 
 			printf("No es posible interpolar con un polinomio de grado %d, se interpolara con uno de grado %d \n",n,max_grado);
 	endif	
 	
   
 	#Calculo s para interpolar
-	s = (apro-dif_fin(pos_interpolar,2))/h;
+	s = (apro-dif_fin(pos_interpolar,2))/h; 
   
   
   
   #Se genera el polinomio
   k(x) = (x-dif_fin(pos_interpolar,2))/h;
   
-  pol(x) = 0*x;
+  pol(x) = 0*x; #se crea el polinomio
 	fact = 1;
 	s_value = 1;
   
   for i = 1 : n+1
-		in = i + pos_interpolar-1;
+		in = i + pos_interpolar-1; #se calcula el valor para recorrer la matriz de dif
 		if i==1 
 			pol(x) = pol(x) + dif_fin(in,i+2); #se agregan los valores para el grado 1
 		else
 			s_value = s_value * (k(x)-(i-2)); #se agregan los valores para los demas
 			fact = fact * (i-1);	
-			pol(x) = pol(x) + (s_value*dif_fin(in,i+2))/fact;
+			pol(x) = pol(x) + (s_value*dif_fin(in,i+2))/fact; #se agregan las expresiones al polinomio 
 		endif
 	endfor
   
   printf("El polinomio que se obtiene es: \n");
-  pol
+  simplify(vpa(pol,5)) #Se imprime el polinomio
   
   
   
@@ -226,18 +227,18 @@ if (interp)
 	#Se realiza la interpolacion
 	valor = 0;
 	fact = 1;
-	s_value = 1;
+	s_value = 1; #se definen las variables a utilizar
 	for i = 1 : n+1
-		in = i + pos_interpolar-1;
+		in = i + pos_interpolar-1; #se calcula el valor para recorrer la matriz de dif
 		if i==1 
 			valor = valor+ dif_fin(in,i+2); #se calcula el valor para pol con grado 1
 		else
 			s_value = s_value * (s-(i-2)); # se calculan los valores para los demas grados
 			fact = fact * (i-1);	
-			valor = valor + (s_value*dif_fin(in,i+2))/fact;
+			valor = valor + (s_value*dif_fin(in,i+2))/fact; #se evalua para cada grado
 		endif
 	endfor
-	printf("Por medio de aproximacion se obtiene: %10f \n",valor);
+	printf("Por medio de aproximacion se obtiene: %10f \n",valor); #se imprime el valor obtenido
   
   
 
