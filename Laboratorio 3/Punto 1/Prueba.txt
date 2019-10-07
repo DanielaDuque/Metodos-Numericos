@@ -60,4 +60,4 @@ for i=1:n+1
    mul=1;
 endfor 
 
-legend('fun1', 'fun2','fun3','cos(x));
+legend('fun1', 'fun2','fun3','cos(x)); #leyendas
