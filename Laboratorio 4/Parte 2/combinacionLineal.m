@@ -1,3 +1,5 @@
+function combinacionLineal
+
 clc;
 clear all;
 
@@ -6,7 +8,7 @@ clear all;
 ac = true;
 while (ac)
   try
-    m = input('Ingrese el grado del polinomio'); #Se guarda en M el grado
+    m = input('Ingrese el grado del polinomio '); #Se guarda en M el grado
     ac = false;
   catch
     printf("Valor invalido, intente de nuevo.\n\n"); #Se verifica que el usuario ingrese un valor valido
@@ -19,7 +21,7 @@ endwhile
 ac = true;
 while (ac)
   try
-    n = input('Ingrese el número de puntos que va a ingresar.');#Se guarda en n la cantidad de puntos
+    n = input('Ingrese el número de puntos que va a ingresar ');#Se guarda en n la cantidad de puntos
     ac = false;
   catch
     printf("Valor invalido, intente de nuevo.\n\n");#Se verifica que el usuario ingrese un valor valido
@@ -34,7 +36,7 @@ x = [];
 while (ac)
    
    cadena = ''; #se crea cadena vacia
-   puntos = input('Ingrese los valores de x','s'); #se ingresa el dato
+   puntos = input('Ingrese los valores de x ','s'); #se ingresa el dato
    er = '[-0123456789.]+';#se crea expression regular
    cadena= regexp(puntos,er);
    for i=1:length(cadena)#Este for asigna los números presentes en el string ingresados por el usuario para luego pasarlos a un arreglo numérico.
@@ -59,7 +61,7 @@ y = [];
 while (ac)
    
    cadena = ''; #se crea cadena vacia
-   puntos = input('Ingrese los valores de x','s'); #se ingresa el dato
+   puntos = input('Ingrese los valores de y ','s'); #se ingresa el dato
    er = '[-0123456789.]+';#se crea expression regular
    cadena= regexp(puntos,er);
    for i=1:length(cadena)#Este for asigna los números presentes en el string ingresados por el usuario para luego pasarlos a un arreglo numérico.
@@ -116,11 +118,11 @@ pol = '';
 #Ciclo para crear la funcion en forma de string
 for u = m+1:-1:1
   if u ~= 1 # Esta condición se usa para que no que un signo de + al final.
-    str1 = {pol,num2str(productoy(u,1)),'*x^',num2str(u-1),'+'};
-    pol = strjoin(str1);
+    str1 = {pol,num2str(productoy(u,1)),'*x^',num2str(u-1),'+'}; #se calculan las primeras expresiones del polinomio
+    pol = strjoin(str1); #se concatena el string
    else
-    str1 = {pol,num2str(productoy(u,1)),'*x^',num2str(u-1)};
-    pol = strjoin(str1);
+    str1 = {pol,num2str(productoy(u,1)),'*x^',num2str(u-1)}; # se cacula el utlimo termino del polinomio
+    pol = strjoin(str1); #se concatena el string
    endif
 endfor
 
@@ -128,14 +130,23 @@ disp(['El polinomio obtenido es: '])
 disp([pol]);
 
 #Funcion para graficar
-G=min(x):(max(x)-min(x))/50:max(x);
+G=min(x)-2:(max(x)-min(x))/50:max(x)+2; #se define el rango a graficar
 f=0;
 for a=1:m+1
-  f = f + productoy(a,1)*G.^(a-1);
+  f = f + productoy(a,1)*G.^(a-1); #se calculan los valores a graficar en el rango G
 endfor  
 
 #Intrucción para graficar la función de aproximación (f).
-plot(G,f); title('Polinomio por metodo de Combinacion Lineal ');
-legend(pol);
-xlabel ("x");
-ylabel ("f(x)");
+
+
+ figure;
+ hold on;
+plot(G,f); 
+title('Polinomio por metodo de Combinacion Lineal '); # se grafica el polinomio obtenido
+for i=1: n
+  plot(x(i),y(i),"*");  #se grafican los puntos ingresados
+endfor
+legend(pol); #se muestra el polinomio obtenido en pantalla.
+xlabel ("x"); #se nombra el eje x
+ylabel ("f(x)"); #se nombra el eje y
+hold off;
