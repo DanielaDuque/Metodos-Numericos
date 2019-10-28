@@ -1,5 +1,5 @@
-clc #Limpia todo el texto de la ventana de comando
-clear all #Limpia todas las variables antes de entrar al programa.
+clc;
+clear all;
 
 
 #Se ingresa el grado M del polinomio a calcular
@@ -19,7 +19,7 @@ endwhile
 ac = true;
 while (ac)
   try
-    n = input('Ingrese el número de puntos que va a ingresar.');#Se guarda en n la cantidad de puntos
+    n = input('Ingrese el nÃºmero de puntos que va a ingresar.');#Se guarda en n la cantidad de puntos
     ac = false;
   catch
     printf("Valor invalido, intente de nuevo.\n\n");#Se verifica que el usuario ingrese un valor valido
@@ -37,14 +37,14 @@ while (ac)
    puntos = input('Ingrese los valores de x','s'); #se ingresa el dato
    er = '[-0123456789.]+';#se crea expression regular
    cadena= regexp(puntos,er);
-   for i=1:length(cadena)#Este for asigna los números presentes en el string ingresados por el usuario para luego pasarlos a un arreglo numérico.
+   for i=1:length(cadena)#Este for asigna los nÃºmeros presentes en el string ingresados por el usuario para luego pasarlos a un arreglo numÃ©rico.
      if i < length(cadena)
         x(i) = str2num(puntos(cadena(i):cadena(i+1)-2)); #se procesa la cadena
      else
         x(i) = str2num(puntos(cadena(i):length(puntos))); #se procesa ultimo elemento
      endif   
    endfor
-   if length(x) ~= n#Se confirma que se ingresaron n+1 números.
+   if length(x) ~= n#Se confirma que se ingresaron n+1 nÃºmeros.
      disp(['Cantidad de datos incorrecta, intente de nuevo']);        
     else
        ac = false;
@@ -62,14 +62,14 @@ while (ac)
    puntos = input('Ingrese los valores de x','s'); #se ingresa el dato
    er = '[-0123456789.]+';#se crea expression regular
    cadena= regexp(puntos,er);
-   for i=1:length(cadena)#Este for asigna los números presentes en el string ingresados por el usuario para luego pasarlos a un arreglo numérico.
+   for i=1:length(cadena)#Este for asigna los nÃºmeros presentes en el string ingresados por el usuario para luego pasarlos a un arreglo numÃ©rico.
      if i < length(cadena)
         y(i) = str2num(puntos(cadena(i):cadena(i+1)-2)); #se procesa la cadena
      else
         y(i) = str2num(puntos(cadena(i):length(puntos))); #se procesa ultimo elemento
      endif   
    endfor
-   if length(x) ~= n#Se confirma que se ingresaron n+1 números.
+   if length(x) ~= n#Se confirma que se ingresaron n+1 nÃºmeros.
      disp(['Cantidad de datos incorrecta, intente de nuevo']);        
     else
        ac = false;
@@ -99,7 +99,7 @@ disp(fp); #se imprime la matriz F'
 
 productof = fp*f; #producto es FF'
 y1 = y.'; #se calcula el valor de la matriz que se calcula con F'
-disp(['La matriz y que se multiplica con F´ es: ']);
+disp(['La matriz y que se multiplica con FÂ´ es: ']);
 disp(y1); #se imprime la matriz
 
 
@@ -115,7 +115,7 @@ pol = '';
 
 #Ciclo para crear la funcion en forma de string
 for u = m+1:-1:1
-  if u ~= 1 # Esta condición se usa para que no que un signo de + al final.
+  if u ~= 1 # Esta condiciÃ³n se usa para que no que un signo de + al final.
     str1 = {pol,num2str(productoy(u,1)),'*x^',num2str(u-1),'+'};
     pol = strjoin(str1);
    else
@@ -134,7 +134,7 @@ for a=1:m+1
   f = f + productoy(a,1)*G.^(a-1);
 endfor  
 
-#Intrucción para graficar la función de aproximación (f).
+#IntrucciÃ³n para graficar la funciÃ³n de aproximaciÃ³n (f).
 plot(G,f); title('Polinomio por metodo de Combinacion Lineal ');
 legend(pol);
 xlabel ("x");
