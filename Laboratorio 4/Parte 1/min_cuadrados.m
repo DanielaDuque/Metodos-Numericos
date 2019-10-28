@@ -6,10 +6,10 @@
     ok = false; #variable de lectura
     while (~ok)#ciclo de lectura
       try
-        M = input('Inqrese la matriz (x,y): ');#lee los puntos
+        M = input('Inqrese la matriz (x,y, f(x)): ');#lee los puntos
         rows = size(M)(1); #calcula las filas
         columns = size(M)(2); #calcula las colummnas
-        if (columns != 2) #verifica que solo de den dos datos por punto
+        if (columns != 3) #verifica que solo de den dos datos por punto
           printf("Error, dimension incorrecta de tamaño %d, favor ingresar unicamente tuplas (x, y)\n" , columns);
         elseif (rows <= 1) #verifica que hallan mas de un punto
          printf("Error, no se puede hacer una aproximacion lineal con un punto.\n");
@@ -28,6 +28,9 @@
     y = M( : , 2);# seleciona las y
     x2 = zeros(9 , 1); #para los x^2
     xy=zeros(9,1);#para los x*y
+    fx=M( : , 3);# seleciona las f(X) 
+    
+  
     
     for i=1:rows #este ciclo va a calcular todos los valores
       x(rows+1)+=x(i); # Sumatoria de x
@@ -90,6 +93,15 @@ printf("%.2f A + %.2f B = %.2f\n", x(rows+1), rows, y(rows+1)); #ecuacion 2
  
   x(rows+1,:) = []; #se elimina la fila de sumatorias para graficar 
   y(rows+1,:) = [];#se elimina la fila de sumatorias para graficar 
+  
+  sum=0; # Variable para calcular el error cuadratico medio
+  for i=1:rows #for para sumatoria
+     sum += (y(i)- fx(i))^2; #calcula el sumatoria (yk-f(x)k)^2
+  endfor #acaba sumatoria
+  sum = sqrt(sum/rows); #Divide en N y saca la raiz
+ 
+  printf("\nError cuadratico Medio :  %f \n", sum); # imprime
+  
   
   #--- grafica-----
   figure
