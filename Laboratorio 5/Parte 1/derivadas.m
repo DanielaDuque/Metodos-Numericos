@@ -138,3 +138,6 @@ for i=2:grado
       poli =  strcat(poli," ] "); #pone el ultimo ]
   endfor
 
+  fun = inline(poli,"x");
+  disp(["Su resultado es ",num2str(fun(2.3))])
+
