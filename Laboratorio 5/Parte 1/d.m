@@ -20,7 +20,16 @@ while (~ok) #inicio del ciclo
     distancia=input('Ingrese la distancia x entre los puntos 10^-x. ');#La variable 't0' representa el valor de la coordenada x del primer nodo.
     ok = true; # varible de salida 
   catch
-    printf("Por favor, ingrese un numero v醠ido.\n\n");#Esta funci髇 try-catch es para que el usuario solo pueda ingresar n鷐eros, ya que n es una variable num閞ica. Esta funci髇 se ve frecuentemente en este c骴igo.
+    printf("Por favor, ingrese un numero v谩lido.\n\n");#Esta funci贸n try-catch es para que el usuario solo pueda ingresar n煤meros, ya que n es una variable num茅rica. Esta funci贸n se ve frecuentemente en este c贸digo.
+  end_try_catch
+endwhile
+ok = false;#variable de salida del ciclo
+while (~ok) #ciclo lectura
+  try
+    rango=input('Ingrese el rango de derivacion ');#La variable 'rango' representa el rango de de derivacion
+    ok = true; #varible de salida del cilco
+  catch
+    printf("Por favor, ingrese un numero v谩lido.\n\n");#Esta funci贸n try-catch es para que el usuario solo pueda ingresar n煤meros, ya que n es una variable num茅rica. Esta funci贸n se ve frecuentemente en este c贸digo.
   end_try_catch
 endwhile
 
@@ -30,7 +39,7 @@ while (~ok) #ciclo lectura
     t0=input('Ingrese el valor a calcular ');#La variable 't0' representa el valor de la coordenada x del primer nodo.
     ok = true; #varible de salida del cilco
   catch
-    printf("Por favor, ingrese un numero v醠ido.\n\n");#Esta funci髇 try-catch es para que el usuario solo pueda ingresar n鷐eros, ya que n es una variable num閞ica. Esta funci髇 se ve frecuentemente en este c骴igo.
+    printf("Por favor, ingrese un numero v谩lido.\n\n");#Esta funci贸n try-catch es para que el usuario solo pueda ingresar n煤meros, ya que n es una variable num茅rica. Esta funci贸n se ve frecuentemente en este c贸digo.
   end_try_catch
 endwhile
 
