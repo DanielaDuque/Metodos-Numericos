@@ -1,10 +1,14 @@
 clc; # limpia 
 clear all; #limpia
 ok = false; #variable salida del ciclo
+warning('off','all'); #desactivar warnings   
+pkg load symbolic #package para calculos
+syms x; # se crea variable simbolica
 while (~ok) #ciclo lectura
   try
     fun = input("Ingrese la funcion f(x)= ","s"); #se lee la funcion
     f = inline(fun,'x');#crea la funcion
+    
     ok = true; #variable de salida
   catch
     printf("Favor ingresar una funcion apropiada \n"); #mensaje de error
@@ -112,6 +116,12 @@ disp(['La aproximacion a la integral de f(x)= ',fun,' usando la regla compuesta 
 disp(['S(f,h)=',num2str(h/3),' ( ',num2str(f(v_i)+f(v_d)),' ) +',num2str(2*h/3),' ( ',num2str(par),' ) + ',num2str(4*h/3),' ( ',num2str(impar),' )']);
 # se muestra en pantalla el resultado
 disp(['S(f,h)=',num2str(aprox)]);
+
+
+deriv = int(fun, x,[v_i v_d]); #dirivacion analitico
+diferencia = eval (aprox - vpa(deriv)); # resta
+
+disp(['Error=',num2str(diferencia)]); #se muestra en pantalla
 
 
 
