@@ -98,7 +98,7 @@ L = linsht("F1","F2",a,b,alpha,beta,M);
 %imprime la tabla
 printf( "%s %20s %20s %15s \n","k" ,"Solucion Metodo", "Solucion exacta", "Error"); %titulos
 for i=1:M+1
-  printf( "%d %15d %20d %20d \n",L(i,1),L(i,2)+20,L(i,3),L(i,4));%resto de la tabla
+  printf( "%d %15d %20d %20d \n",L(i,1),L(i,2),L(i,3),L(i,4));%resto de la tabla
 endfor
 
 #grafico

@@ -17,7 +17,7 @@ function L = linsht(F1,F2,a,b,alpha,beta,M)
 	V=Z(:,1);
   
 	%Calculo de la solucion del problema de contorno
-	X=U+(beta-U(M+1))*V/V(M+1);
+	X=U+(beta-U(M+1))*V/V(M+1)+20;
   
 
   Y=zeros(M-1,1); % Solucion exacta iniciaizacion
@@ -27,7 +27,7 @@ function L = linsht(F1,F2,a,b,alpha,beta,M)
   const = (b-a)/M; %Calculo aumento
   for k=1: M+1 %inicio for
     Y(k)= f(i); % Calculo solucion exacta
-    Z(k)= Y(k) - X(k) -20; %Calculo del error
+    Z(k)= Y(k) - X(k) ; %Calculo del error
     i+= const;
   endfor % fin for 
 
